@@ -90,5 +90,6 @@ public class AuctionlandController {
     {
         System.out.println("API Call Test Success");
         return "강하늘 붐돌맘";
+        
     }
 }
