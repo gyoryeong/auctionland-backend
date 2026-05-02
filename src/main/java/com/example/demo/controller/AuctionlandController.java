@@ -86,7 +86,7 @@ public class AuctionlandController {
     }
 
     @GetMapping("/testCall2")
-    public String testCall2()
+    public String testCall()
     {
         System.out.println("API Call Test Success");
         return "강하늘 붐돌맘";
