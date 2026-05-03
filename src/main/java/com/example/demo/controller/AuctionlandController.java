@@ -85,11 +85,11 @@ public class AuctionlandController {
 
     }
 
-    @GetMapping("/testCall2")
-    public String testCall()
-    {
-        System.out.println("API Call Test Success");
-        //return "강하늘 붐돌맘";
-        //웹훅 테스트5
-    }
+    // @GetMapping("/testCall2")
+    // public String testCall()
+    // {
+    //     System.out.println("API Call Test Success");
+    //     //return "강하늘 붐돌맘";
+    //     //웹훅 테스트5
+    // }
 }
