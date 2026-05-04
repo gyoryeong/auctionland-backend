@@ -11,7 +11,7 @@ import java.util.Optional;
 
 
 public interface AuctionlandService {
-    public ResponseEntity<List<String>> getSidoLocationNameList();
+    public ResponseEntity<List<String>> getSidoLocationNameList(String region);
     public ResponseEntity<List<String>> getSiguLocationNameList(String sidoData);
     public ResponseEntity<List<String>> getSidongLocationNameList(String sidoData, String siguData);
 
