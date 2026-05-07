@@ -89,7 +89,7 @@ public class AuctionlandController {
     public String testCall()
     {
         System.out.println("API Call Test Success");
-        return "강하늘 붐돌맘";
+        //return "강하늘 붐돌맘";
         //웹훅 테스트5
     }
 }
