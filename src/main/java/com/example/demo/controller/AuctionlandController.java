@@ -85,11 +85,22 @@ public class AuctionlandController {
 
     }
 
-    // @GetMapping("/testCall2")
-    // public String testCall()
-    // {
-    //     System.out.println("API Call Test Success");
-    //     //return "강하늘 붐돌맘";
-    //     //웹훅 테스트5
-    // }
+    @GetMapping("/testCall2")
+    public String testCall()
+    {
+        System.out.println("API Call Test Success");
+        //return "강하늘 붐돌맘";
+        //웹훅 테스트5
+    }
+
+    @GetMapping("/checkValidLocation")
+    public ResponseEntity<String> checkValidLocation(
+            @RequestParam(required = false) String sidoCode,
+            @RequestParam(required = false) String siguCode) {
+        // sidoCode 또는 siguCode 중 하나라도 null이면 invalid 처리하려는 의도
+        if (sidoCode == null && siguCode == null) {
+            return ResponseEntity.badRequest().body("Invalid location codes");
+        }
+        return ResponseEntity.ok("Sido: " + sidoCode + ", Sigu: " + siguCode);
+    }
 }
