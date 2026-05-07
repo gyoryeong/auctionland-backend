@@ -104,3 +104,4 @@ public class AuctionlandController {
         return ResponseEntity.ok("Sido: " + sidoCode + ", Sigu: " + siguCode);
     }
 }
+ 
