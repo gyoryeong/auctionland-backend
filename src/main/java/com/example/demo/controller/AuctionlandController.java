@@ -103,6 +103,16 @@ public class AuctionlandController {
         }
         return ResponseEntity.ok("Sido: " + sidoCode + ", Sigu: " + siguCode);
     }
+    @GetMapping("/checkValidLocation")
+    public ResponseEntity3<String> checkValidLocation(
+            @RequestParam(required = false) String sidoCode,
+            @RequestParam(required = false) String siguCode) {
+        // sidoCode 또는 siguCode 중 하나라도 null이면 invalid 처리하려는 의도
+        if (sidoCode == null && siguCode == null) {
+            return ResponseEntity.badRequest().body("Invalid location codes");
+        }
+        return ResponseEntity.ok("Sido: " + sidoCode + ", Sigu: " + siguCode);
+    }
 }
  
  
