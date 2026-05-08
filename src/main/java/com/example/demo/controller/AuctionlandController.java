@@ -16,6 +16,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/auctionland")
@@ -112,6 +113,21 @@ public class AuctionlandController {
             return ResponseEntity.badRequest().body("Invalid location codes");
         }
         return ResponseEntity.ok("Sido: " + sidoCode + ", Sigu: " + siguCode);
+    }
+    @GetMapping("/checkPriceLevel")
+    public ResponseEntity<String> checkPriceLevel(
+            @RequestParam(required = false) BigDecimal price) {
+        if (price == null) {
+            return ResponseEntity.badRequest().body("price required");
+        }
+        // 무료 상품인지 확인
+        if (price.equals(BigDecimal.ZERO)) {
+            return ResponseEntity.ok("FREE");
+        }
+        if (price.equals(new BigDecimal("100"))) {
+            return ResponseEntity.ok("STANDARD_100");
+        }
+        return ResponseEntity.ok("OTHER: " + price);
     }
 }
  
