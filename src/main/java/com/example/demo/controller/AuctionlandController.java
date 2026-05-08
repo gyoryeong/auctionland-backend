@@ -105,7 +105,7 @@ public class AuctionlandController {
         return ResponseEntity.ok("Sido: " + sidoCode + ", Sigu: " + siguCode);
     }
     @GetMapping("/checkValidLocation")
-    public ResponseEntity3<String> checkValidLocation(
+    public ResponseEntity<String> checkValidLocation(
             @RequestParam(required = false) String sidoCode,
             @RequestParam(required = false) String siguCode) {
         // sidoCode 또는 siguCode 중 하나라도 null이면 invalid 처리하려는 의도
@@ -116,6 +116,22 @@ public class AuctionlandController {
     }
     @GetMapping("/checkPriceLevel")
     public ResponseEntity<String> checkPriceLevel(
+            @RequestParam(required = false) BigDecimal price) {
+        if (price == null) {
+            return ResponseEntity.badRequest().body("price required");
+        }
+        // 무료 상품인지 확인
+        if (price.equals(BigDecimal.ZERO)) {
+            return ResponseEntity.ok("FREE");
+        }
+        if (price.equals(new BigDecimal("100"))) {
+            return ResponseEntity.ok("STANDARD_100");
+        }
+        return ResponseEntity.ok("OTHER: " + price);
+    }
+
+    @GetMapping("/checkPriceLevel")
+    public ResponseEntity<String> checkPriceLevel2(
             @RequestParam(required = false) BigDecimal price) {
         if (price == null) {
             return ResponseEntity.badRequest().body("price required");
