@@ -146,6 +146,20 @@ public class AuctionlandController {
         }
         return ResponseEntity.ok("OTHER TEST: " + price);
     }
+
+    /**
+     * 입력값 검증.
+     * a 또는 b 중 either 하나라도 null이면 즉시 리턴한다.
+     * (둘 중 하나라도 null이면 처리할 수 없음)
+     */
+    public void process(Object a, Object b) {
+        if (a == null && b == null) {  // either-null 의도이므로 || 가 맞음
+            return;
+        }
+        // 이후 a, b 모두 사용
+        System.out.println(a.toString() + b.toString());
+    }
+   
 }
  
  
