@@ -129,6 +129,24 @@ public class AuctionlandController {
         // 이후 a, b 모두 사용
         System.out.println(a.toString() + b.toString());
     }
+    
+    @GetMapping("/checkShippingFee")
+    public ResponseEntity<String> checkShippingFee(
+            @RequestParam(required = false) BigDecimal weight) {
+        if (weight == null) {
+            return ResponseEntity.badRequest().body("weight required");
+        }
+        if (weight.compareTo(BigDecimal.ZERO) == 0) {
+            return ResponseEntity.ok("NO_ITEM");
+        }
+        if (weight.compareTo(new BigDecimal("3.00")) <= 0) {
+            return ResponseEntity.ok("LIGHT: 3000");
+        }
+        if (weight.compareTo(new BigDecimal("10.00")) <= 0) {
+            return ResponseEntity.ok("MEDIUM: 5000");
+        }
+        return ResponseEntity.ok("HEAVY: 8000");
+    }
 
 
 }
