@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+neo4j_env.txt
+.venv/
+.bkit/
+ast_test.json
+ast_to_neo4j.ipynb
