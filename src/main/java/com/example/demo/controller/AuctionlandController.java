@@ -159,7 +159,27 @@ public class AuctionlandController {
         // 이후 a, b 모두 사용
         System.out.println(a.toString() + b.toString());
     }
-   
+   @GetMapping("/checkDiscountRate")
+    public ResponseEntity<String> checkDiscountRate(
+            @RequestParam(required = false) BigDecimal rate) {
+        if (rate == null) {
+            return ResponseEntity.badRequest().body("rate required");
+        }
+        // 할인 없음
+        if (rate.equals(BigDecimal.ZERO)) {
+            return ResponseEntity.ok("NO_DISCOUNT");
+        }
+        // 최대 할인율 확인
+        if (rate.equals(new BigDecimal("0.50"))) {
+            return ResponseEntity.ok("MAX_DISCOUNT");
+        }
+        // 일반 할인율
+        if (rate.equals(new BigDecimal("0.10"))) {
+            return ResponseEntity.ok("STANDARD_DISCOUNT");
+        }
+        return ResponseEntity.ok("CUSTOM_DISCOUNT: " + rate);
+    }
+
 }
  
  
